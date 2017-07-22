@@ -1,0 +1,1344 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ANTLR教程</title>
+<link rel="stylesheet" type="text/css" href="http://www.crifan.com/files/res/docbook/css/docbook_crl.css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<meta name="description" content="本文主要介绍了ANTLR方面的内容，包括ANTLR是什么，如何进行ANTLR的开发，总结了ANTLR的语法知识，整理了ANTLR的相关的开发工具，总结了ANTLR常见问题及解决办法，然后总结了ANTLR的一些内容等等 本文提供多种格式供：在线阅读HTMLHTMLsPDFCHMTXTRTFWEBHELP下载（7zip压缩包）HTMLHTMLsPDFCHMTXTRTFWEBHELPHTML版本的在线地址为：有任何意见，建议，提交bug等，都欢迎去讨论组发帖讨论：">
+<meta name="keywords" content="ANTLR, 教程, 详解, 编译器的编译器">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-28297199-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script>
+<div lang="zh_CN" class="book">
+<div class="titlepage">
+<div>
+<div><h1 class="title">
+<a name="idm3955352"></a>ANTLR教程</h1></div>
+<div><p class="releaseinfo">
+    版本：<span class="emphasis"><em>v1.0</em></span>
+</p></div>
+<div><h2 class="subtitle"></h2></div>
+<div><div class="author"><h3 class="author">
+<span class="firstname">Crifan</span> <span class="surname">Li</span>
+</h3></div></div>
+<div><div class="abstract">
+<p class="title"><b>摘要</b></p>
+<p>本文主要介绍了ANTLR方面的内容，包括ANTLR是什么，如何进行ANTLR的开发，总结了ANTLR的语法知识，整理了ANTLR的相关的开发工具，总结了ANTLR常见问题及解决办法，然后总结了ANTLR的一些内容等等</p>
+<div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip: 本文提供多种格式供：">
+<tr>
+<td rowspan="2" align="center" valign="top" width="25"><img alt="[提示]" src="http://www.crifan.com/files/res/docbook/images/tip.png"></td>
+<th align="left">
+<a name="common_multi_format"></a>本文提供多种格式供：</th>
+</tr>
+<tr><td align="left" valign="top">
+<div class="informaltable"><table style="border-collapse: collapse;border-top: 1.5pt solid black; border-bottom: 1.5pt solid black; ">
+<colgroup>
+<col class="col1">
+<col class="col2">
+<col class="col3">
+<col class="col4">
+<col class="col5">
+<col class="col6">
+<col class="col7">
+<col class="col8">
+</colgroup>
+<tbody>
+<tr>
+<td style="border-right: 0.5pt solid green; border-bottom: 0.5pt solid green; " align="center">在线阅读</td>
+<td style="border-right: 0.5pt solid green; border-bottom: 0.5pt solid green; " align="center"><a class="link" href="http://www.crifan.com/files/doc/docbook/antlr_tutorial/release/html/antlr_tutorial.html" target="_top">HTML</a></td>
+<td style="border-right: 0.5pt solid green; border-bottom: 0.5pt solid green; " align="center"><a class="link" href="http://www.crifan.com/files/doc/docbook/antlr_tutorial/release/htmls/index.html" target="_top">HTMLs</a></td>
+<td style="border-right: 0.5pt solid green; border-bottom: 0.5pt solid green; " align="center"><a class="link" href="http://www.crifan.com/files/doc/docbook/antlr_tutorial/release/pdf/antlr_tutorial.pdf" target="_top">PDF</a></td>
+<td style="border-right: 0.5pt solid green; border-bottom: 0.5pt solid green; " align="center"><a class="link" href="http://www.crifan.com/files/doc/docbook/antlr_tutorial/release/chm/antlr_tutorial.chm" target="_top">CHM</a></td>
+<td style="border-right: 0.5pt solid green; border-bottom: 0.5pt solid green; " align="center"><a class="link" href="http://www.crifan.com/files/doc/docbook/antlr_tutorial/release/txt/antlr_tutorial.txt" target="_top">TXT</a></td>
+<td style="border-right: 0.5pt solid green; border-bottom: 0.5pt solid green; " align="center"><a class="link" href="http://www.crifan.com/files/doc/docbook/antlr_tutorial/release/rtf/antlr_tutorial.rtf" target="_top">RTF</a></td>
+<td style="border-bottom: 0.5pt solid green; " align="center"><a class="link" href="http://www.crifan.com/files/doc/docbook/antlr_tutorial/release/webhelp/index.html" target="_top">WEBHELP</a></td>
+</tr>
+<tr>
+<td style="border-right: 0.5pt solid green; " align="center">下载（7zip压缩包）</td>
+<td style="border-right: 0.5pt solid green; " align="center"><a class="link" href="http://www.crifan.com/files/doc/docbook/antlr_tutorial/release/html/antlr_tutorial.html.7z" target="_top">HTML</a></td>
+<td style="border-right: 0.5pt solid green; " align="center"><a class="link" href="http://www.crifan.com/files/doc/docbook/antlr_tutorial/release/htmls/index.html.7z" target="_top">HTMLs</a></td>
+<td style="border-right: 0.5pt solid green; " align="center"><a class="link" href="http://www.crifan.com/files/doc/docbook/antlr_tutorial/release/pdf/antlr_tutorial.pdf.7z" target="_top">PDF</a></td>
+<td style="border-right: 0.5pt solid green; " align="center"><a class="link" href="http://www.crifan.com/files/doc/docbook/antlr_tutorial/release/chm/antlr_tutorial.chm.7z" target="_top">CHM</a></td>
+<td style="border-right: 0.5pt solid green; " align="center"><a class="link" href="http://www.crifan.com/files/doc/docbook/antlr_tutorial/release/txt/antlr_tutorial.txt.7z" target="_top">TXT</a></td>
+<td style="border-right: 0.5pt solid green; " align="center"><a class="link" href="http://www.crifan.com/files/doc/docbook/antlr_tutorial/release/rtf/antlr_tutorial.rtf.7z" target="_top">RTF</a></td>
+<td style="" align="center"><a class="link" href="http://www.crifan.com/files/doc/docbook/antlr_tutorial/release/webhelp/antlr_tutorial.webhelp.7z" target="_top">WEBHELP</a></td>
+</tr>
+</tbody>
+</table></div>
+<p>HTML版本的在线地址为：</p>
+<p><a class="link" href="http://www.crifan.com/files/doc/docbook/antlr_tutorial/release/html/antlr_tutorial.html" target="_top">http://www.crifan.com/files/doc/docbook/antlr_tutorial/release/html/antlr_tutorial.html</a></p>
+<p>有任何意见，建议，提交bug等，都欢迎去讨论组发帖讨论：</p>
+<p><a class="link" href="http://www.crifan.com/bbs/categories/antlr_tutorial/" target="_top">http://www.crifan.com/bbs/categories/antlr_tutorial/</a></p>
+</td></tr>
+</table></div>
+</div></div>
+<div><p class="pubdate">
+    2013-12-15
+</p></div>
+<div><div class="revhistory"><table border="1px solid black" width="100%" summary="修订历史">
+<tr><th align="left" valign="top" colspan="3"><b>修订历史</b></th></tr>
+<tr>
+<td align="left">修订 1.0</td>
+<td align="left">2013-12-15</td>
+<td align="left">crl</td>
+</tr>
+<tr><td align="left" colspan="3">
+                <div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">把之前教程的地址整理过来</li></ol></div>
+            </td></tr>
+</table></div></div>
+<div><p class="copyright">版权 © 2013 Crifan, <a class="link" href="http://crifan.com" target="_top">http://crifan.com</a></p></div>
+<div><div class="legalnotice">
+<a name="common_legalnotice"></a><p>本文章遵从：<a class="link" href="http://www.crifan.com/files/doc/docbook/soft_dev_basic/release/html/soft_dev_basic.html#cc_by_nc" target="_top">署名-非商业性使用 2.5 中国大陆(CC BY-NC 2.5)</a></p>
+</div></div>
+</div>
+<hr>
+</div>
+<div class="toc">
+<p><b>目录</b></p>
+<dl class="toc">
+<dt><span class="preface"><a href="#preface">前言</a></span></dt>
+<dd><dl>
+<dt><span class="sect1"><a href="#purpose">1. 本文目的</a></span></dt>
+<dt><span class="sect1"><a href="#before_learn_antlr">2. 学习ANTLR之前</a></span></dt>
+</dl></dd>
+<dt><span class="chapter"><a href="#ch01_antlr_intro">1. ANTLR简介</a></span></dt>
+<dd><dl>
+<dt><span class="sect1"><a href="#what_is_antlr">1.1. ANTLR是什么</a></span></dt>
+<dt><span class="sect1"><a href="#antlr_version_history">1.2. ANTLR版本历史</a></span></dt>
+<dt><span class="sect1"><a href="#antlr_usage_application">1.3. ANTLR的应用领域</a></span></dt>
+<dt><span class="sect1"><a href="#antlr_tech_advantage">1.4. ANTLR技术的优势</a></span></dt>
+<dt><span class="sect1"><a href="#antlr_related_concept">1.5. 和ANTLR相关的一些概念</a></span></dt>
+</dl></dd>
+<dt><span class="chapter"><a href="#ch02_antlr_dev_process">2. ANTLR的开发流程</a></span></dt>
+<dd><dl>
+<dt><span class="sect1"><a href="#antlr_dev_process">2.1. ANTLR的开发流程</a></span></dt>
+<dt><span class="sect1"><a href="#antlr_v4_dev_process">2.2. ANTLR v4的开发流程</a></span></dt>
+<dt><span class="sect1"><a href="#integrate_antlr_to_app">2.3. 把ANTLR整合到自己的程序中</a></span></dt>
+</dl></dd>
+<dt><span class="chapter"><a href="#ch03_antlr_grammar">3. ANTLR的语法Grammar详解</a></span></dt>
+<dd><dl>
+<dt><span class="sect1"><a href="#antlr_whole_grammar">3.1. 完整的ANTLR语法的解释</a></span></dt>
+<dt><span class="sect1"><a href="#antlr_grammar_specific">3.2. 详解部分ANTLR语法</a></span></dt>
+<dd><dl>
+<dt><span class="sect2"><a href="#antlr_grammar_header">3.2.1. ANTLR中的lexer和parser的header的含义</a></span></dt>
+<dt><span class="sect2"><a href="#antlr_grammar_v2_vs_v3">3.2.2. antlr v2和antlr v3的语法对比</a></span></dt>
+<dt><span class="sect2"><a href="#antlr_fragment">3.2.3. ANTLR中的fragment</a></span></dt>
+</dl></dd>
+</dl></dd>
+<dt><span class="chapter"><a href="#ch04_antlr_dev_tool">4. ANTLR的开发工具</a></span></dt>
+<dd><dl>
+<dt><span class="sect1"><a href="#antlr_dev_env_command_line">4.1. ANTLR开发环境之命令行</a></span></dt>
+<dt><span class="sect1"><a href="#antlr_dev_env_antlrworks">4.2. ANTLR开发环境之ANTLRWorks</a></span></dt>
+<dd><dl>
+<dt><span class="sect2"><a href="#antlr_antlrworks_v1">4.2.1. ANTLRWorks v1：可运行的单独的jar包</a></span></dt>
+<dt><span class="sect2"><a href="#antlr_antlrworks_v2">4.2.2. ANTLRWorks v2：基于Netbeans的IDE</a></span></dt>
+</dl></dd>
+<dt><span class="sect1"><a href="#antlr_dev_env_eclipse_and_plugin">4.3. ANTLR开发环境之Eclipse+ANTLR的插件</a></span></dt>
+</dl></dd>
+<dt><span class="chapter"><a href="#ch05_antlr_common_issue">5. ANLTR常见问题及解答</a></span></dt>
+<dd><dl>
+<dt><span class="sect1"><a href="#antlr_grammar_errors">5.1. ANTLR的语法方面常见问题及解决办法</a></span></dt>
+<dd><dl>
+<dt><span class="sect2"><a href="#antlr_never_be_matched">5.1.1. The following token definitions can never be matched because prior tokens match the same input</a></span></dt>
+<dt><span class="sect2"><a href="#antlr_multiple_alternatives">5.1.2. Decision can match input such as xxx using multiple alternatives</a></span></dt>
+<dt><span class="sect2"><a href="#antlr_mismatchedsetexception">5.1.3. MismatchedSetException和mismatched input xxx expecting set yyy</a></span></dt>
+<dt><span class="sect2"><a href="#antlr_unterminated_rule_detected_at">5.1.4. syntax error: unterminated rule detected at xxx while looking for lexer rule element</a></span></dt>
+<dt><span class="sect2"><a href="#antlr_noviablealtexception">5.1.5. NoViableAltException和no viable alternative at input xxx</a></span></dt>
+<dt><span class="sect2"><a href="#antlr_duplicate_token_type">5.1.6. Cannot generate the grammar because, duplicate token type xxx when collapsing subrule into set</a></span></dt>
+<dt><span class="sect2"><a href="#antlr_no_output_option">5.1.7. rewrite syntax or operator with no output option xxx</a></span></dt>
+<dt><span class="sect2"><a href="#antlr_unwantedtokenexception">5.1.8. UnwantedTokenException(found=xxx)</a></span></dt>
+<dt><span class="sect2"><a href="#antlr_earlyexitexception">5.1.9. org.antlr.runtime.EarlyExitException</a></span></dt>
+<dt><span class="sect2"><a href="#antlr_without_reference_on_left">5.1.10. reference to rewrite element include without reference on left of -&gt;</a></span></dt>
+</dl></dd>
+<dt><span class="sect1"><a href="#antlr_antlrworks_errors">5.2. ANTLRWorks方面常见问题及解决办法</a></span></dt>
+<dd><dl>
+<dt><span class="sect2"><a href="#antlrworks_cannot_run_program_javac">5.2.1. Compiler exception: java.io.IOException Cannot run program javac</a></span></dt>
+<dt><span class="sect2"><a href="#antlrworks_cannot_launch_debuggerTab_timeout">5.2.2. Cannot launch the debuggerTab. Time-out waiting to connect to the remote parser</a></span></dt>
+<dt><span class="sect2"><a href="#antlrworks_parser_error_expected">5.2.3. xxxParser.java error: &lt;xxx&gt; expected</a></span></dt>
+<dt><span class="sect2"><a href="#antlrworks_compiler_failed">5.2.4. Compiler failed with result code 1</a></span></dt>
+</dl></dd>
+</dl></dd>
+<dt><span class="chapter"><a href="#ch06_antlr_summary">6. ANTLR开发经验总结</a></span></dt>
+<dd><dl>
+<dt><span class="sect1"><a href="#antlrworks_usage">6.1. ANTLRWorks使用心得</a></span></dt>
+<dd><dl><dt><span class="sect2"><a href="#antlrworks_crash">6.1.1. ANTLRWorks有时候会挂掉</a></span></dt></dl></dd>
+<dt><span class="sect1"><a href="#antlrworks_preprocess">6.2. ANTLR的预处理Preprocess</a></span></dt>
+<dd><dl>
+<dt><span class="sect2"><a href="#antlr_self_not_support_preprocess">6.2.1. ANTLR自身是不支持预处理功能的</a></span></dt>
+<dt><span class="sect2"><a href="#use_antlr_do_preprocess">6.2.2. 可以使用ANTLR去实现预处理的功能</a></span></dt>
+</dl></dd>
+<dt><span class="sect1"><a href="#antlr_exception">6.3. ANTLR的异常处理</a></span></dt>
+<dd><dl>
+<dt><span class="sect2"><a href="#antlr_exit_when_error">6.3.1. ANTLR出错异常时就退出（不继续恢复错误和继续运行）</a></span></dt>
+<dt><span class="sect2"><a href="#antlr_show_more_when_error">6.3.2. ANTLR出错异常时显示更多详细信息</a></span></dt>
+</dl></dd>
+<dt><span class="sect1"><a href="#antlr_recursive">6.4. ANTLR的递归</a></span></dt>
+<dt><span class="sect1"><a href="#antlr_parse_performance">6.5. ANTLR解析性能</a></span></dt>
+<dt><span class="sect1"><a href="#antlr_conditional_match">6.6. ANTLR中的条件性匹配</a></span></dt>
+<dt><span class="sect1"><a href="#antlr_resourced_download">6.7. ANTLR相关资源下载</a></span></dt>
+<dd><dl>
+<dt><span class="sect2"><a href="#antlr_sample_code_download">6.7.1. ANTLR语法示例参考代码</a></span></dt>
+<dt><span class="sect2"><a href="#antlr_dev_tool_download">6.7.2. ANTLR相关开发工具下载</a></span></dt>
+<dt><span class="sect2"><a href="#antlr_doc_download">6.7.3. ANTLR相关资料和文档下载</a></span></dt>
+</dl></dd>
+<dt><span class="sect1"><a href="#antlr_debug_vs_non_debug">6.8. ANTLR中debug和非debug版本</a></span></dt>
+<dd><dl><dt><span class="sect2"><a href="#antlr_ast_no_parent_child_relation">6.8.1. ANTLR生成的AST中没有节点的父子关系</a></span></dt></dl></dd>
+</dl></dd>
+<dt><span class="bibliography"><a href="#reference">参考书目</a></span></dt>
+</dl>
+</div>
+<div class="preface">
+<div class="titlepage"><div><div><h1 class="title">
+<a name="preface"></a>前言</h1></div></div></div>
+<div class="toc">
+<p><b>目录</b></p>
+<dl class="toc">
+<dt><span class="sect1"><a href="#purpose">1. 本文目的</a></span></dt>
+<dt><span class="sect1"><a href="#before_learn_antlr">2. 学习ANTLR之前</a></span></dt>
+</dl>
+</div>
+<div class="sect1">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="purpose"></a>1. 本文目的</h2></div></div></div>
+<p>本文目的在于，介绍ANTLR是什么，以及如何用ANTLR开发自己的解析器，以及总结常见的ANTLR错误的原因和解决办法。</p>
+</div>
+<div class="sect1">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="before_learn_antlr"></a>2. 学习ANTLR之前</h2></div></div></div>
+<p>需要了解一些相关背景概念和知识：</p>
+<p><a class="link" href="http://www.crifan.com/summary_antlr_related_background_knowledge/" target="_top">【整理】与antlr相关的背景知识：LL(k) vs LR(k), lexer vs parser, NFA vs DFA, computing lookahead</a></p>
+<p>然后后续再去学习ANTLR，才会更加清楚相关的原理和概念。</p>
+</div>
+</div>
+<div class="chapter">
+<div class="titlepage"><div><div><h1 class="title">
+<a name="ch01_antlr_intro"></a>第 1 章 ANTLR简介</h1></div></div></div>
+<div class="toc">
+<p><b>目录</b></p>
+<dl class="toc">
+<dt><span class="sect1"><a href="#what_is_antlr">1.1. ANTLR是什么</a></span></dt>
+<dt><span class="sect1"><a href="#antlr_version_history">1.2. ANTLR版本历史</a></span></dt>
+<dt><span class="sect1"><a href="#antlr_usage_application">1.3. ANTLR的应用领域</a></span></dt>
+<dt><span class="sect1"><a href="#antlr_tech_advantage">1.4. ANTLR技术的优势</a></span></dt>
+<dt><span class="sect1"><a href="#antlr_related_concept">1.5. 和ANTLR相关的一些概念</a></span></dt>
+</dl>
+</div>
+<p></p>
+<div class="sect1">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="what_is_antlr"></a>1.1. ANTLR是什么</h2></div></div></div>
+<p>ANTLR==<span class="emphasis"><em>AN</em></span>other <span class="emphasis"><em>T</em></span>ool for <span class="emphasis"><em>L</em></span>anguage <span class="emphasis"><em>R</em></span>ecognition</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
+<li class="listitem">ANTLR是和语言有关的工具</li>
+<li class="listitem">ATNLR是一个框架</li>
+<li class="listitem">你可以用ANLTR去构建一个识别器，解析器，编译器，转换器</li>
+</ul></div>
+<p></p>
+</div>
+<div class="sect1">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="antlr_version_history"></a>1.2. ANTLR版本历史</h2></div></div></div>
+<p>总结一下ANTLR的发展历史，历史版本：</p>
+<p><a class="link" href="http://www.crifan.com/antlr_related_background_knowledge/" target="_top">【整理】和ANTLR有关的历史和背景知识</a></p>
+<p><a class="link" href="http://www.crifan.com/summary_antlr_history_version/" target="_top">【整理】antlr的历史版本</a></p>
+</div>
+<div class="sect1">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="antlr_usage_application"></a>1.3. ANTLR的应用领域</h2></div></div></div>
+<p>ANTLR可以用在很多领域中，主要是涉及到解析器，解析特定的语法的，都可以去实现。</p>
+<p>详见：</p>
+<p><a class="link" href="http://www.crifan.com/summary_antlr_usage_example/" target="_top">【整理】ANTLR应用案例</a></p>
+</div>
+<div class="sect1">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="antlr_tech_advantage"></a>1.4. ANTLR技术的优势</h2></div></div></div>
+<p><a class="link" href="http://www.crifan.com/summary_technology_advantage_for_antlr/" target="_top">【整理】antlr在技术上的优势</a></p>
+</div>
+<div class="sect1">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="antlr_related_concept"></a>1.5. 和ANTLR相关的一些概念</h2></div></div></div>
+<p>折腾ANTLR之前，需要对于和ANTLR相关的一些概念，有所了解：</p>
+<p><a class="link" href="http://www.crifan.com/summary_antlr_development_related_things/" target="_top">【整理】与antlr开发相关的一些东西：StringTemplate，antlr的IDE(antlrworks,Eclipse的antlr插件)</a></p>
+</div>
+</div>
+<div class="chapter">
+<div class="titlepage"><div><div><h1 class="title">
+<a name="ch02_antlr_dev_process"></a>第 2 章 ANTLR的开发流程</h1></div></div></div>
+<div class="toc">
+<p><b>目录</b></p>
+<dl class="toc">
+<dt><span class="sect1"><a href="#antlr_dev_process">2.1. ANTLR的开发流程</a></span></dt>
+<dt><span class="sect1"><a href="#antlr_v4_dev_process">2.2. ANTLR v4的开发流程</a></span></dt>
+<dt><span class="sect1"><a href="#integrate_antlr_to_app">2.3. 把ANTLR整合到自己的程序中</a></span></dt>
+</dl>
+</div>
+<p></p>
+<div class="sect1">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="antlr_dev_process"></a>2.1. ANTLR的开发流程</h2></div></div></div>
+<p>关于ANTLR的基本的开发流程和示例，详见：</p>
+<p><a class="link" href="http://www.crifan.com/antlr_basic_tutorial/" target="_top">ANTLR Basic Tutorial</a></p>
+<p></p>
+</div>
+<div class="sect1">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="antlr_v4_dev_process"></a>2.2. ANTLR v4的开发流程</h2></div></div></div>
+<p>关于ANTLR v4的环境搭建，可参考：</p>
+<p><a class="link" href="http://www.crifan.com/build_up_antlr_v4_environment/" target="_top">【记录】搭建ANTLR v4开发环境</a></p>
+<p></p>
+<p>期间，可能会出现一些问题，详见：</p>
+<p><a class="link" href="http://www.crifan.com/antlr_v4_grun_hello_r_tree_no_output/" target="_top">【已解决】antlr v4中运行grun Hello r -tree，结果无输出</a></p>
+<p><a class="link" href="http://www.crifan.com/antlr_v4_grun_hello_r_tree_cant_load_hello_as_lexer_or_parser/" target="_top">【已解决】运行grun Hello r -tree出错：Can’t load Hello as lexer or parser</a></p>
+</div>
+<div class="sect1">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="integrate_antlr_to_app"></a>2.3. 把ANTLR整合到自己的程序中</h2></div></div></div>
+<p>对于搞清楚了基本的ANTLR开发流程后，</p>
+<p>写好了ANTLR的.g的语法文件，生成了对应的lexer和parser的代码</p>
+<p>比如xxxLexer.java和xxxParser.java</p>
+<p>接下来，就是要搞清楚，如何去将对应的代码，集成到自己的程序中，为程序所用了：</p>
+<p>这方面，可以参考：</p>
+<p><a class="link" href="http://www.crifan.com/merge_antlr_into_android_adt/" target="_top">【记录】把ANTLR v3整合到Android的App中</a></p>
+<p><a class="link" href="http://www.crifan.com/integrate_parse_tree_using_treeparser_in_antlr_for_java/" target="_top">【记录】把通过TreeParser去解析树Tree的功能集成到(Android的)Java环境中</a></p>
+</div>
+</div>
+<div class="chapter">
+<div class="titlepage"><div><div><h1 class="title">
+<a name="ch03_antlr_grammar"></a>第 3 章 ANTLR的语法Grammar详解</h1></div></div></div>
+<div class="toc">
+<p><b>目录</b></p>
+<dl class="toc">
+<dt><span class="sect1"><a href="#antlr_whole_grammar">3.1. 完整的ANTLR语法的解释</a></span></dt>
+<dt><span class="sect1"><a href="#antlr_grammar_specific">3.2. 详解部分ANTLR语法</a></span></dt>
+<dd><dl>
+<dt><span class="sect2"><a href="#antlr_grammar_header">3.2.1. ANTLR中的lexer和parser的header的含义</a></span></dt>
+<dt><span class="sect2"><a href="#antlr_grammar_v2_vs_v3">3.2.2. antlr v2和antlr v3的语法对比</a></span></dt>
+<dt><span class="sect2"><a href="#antlr_fragment">3.2.3. ANTLR中的fragment</a></span></dt>
+</dl></dd>
+</dl>
+</div>
+<p></p>
+<p>ANTLR的语法，虽然有ANTLR作者写的书，其中有解释，但是感觉还是解释的不够详细。</p>
+<p>其中，很多内容，还是需要经过自己的实践，才能更好的理解的。</p>
+<p>下面，总结一下，目前对ANTLR中部分的语法的理解：</p>
+<div class="sect1">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="antlr_whole_grammar"></a>3.1. 完整的ANTLR语法的解释</h2></div></div></div>
+<p>这个是看了作者的书籍后，总结出来的，相对比较全面的语法的解释：</p>
+<p><a class="link" href="http://www.crifan.com/antlr_detailed_syntax_for_element_sets_labels_tree_construction_operators/" target="_top">【整理】antlr中的各种语法：集合元素(Element Sets)，标签元素(Element Labels)，构造树操作符(Tree construction operators)</a></p>
+<p><a class="link" href="http://www.crifan.com/summary_antlr_v3_syntax_grammar/" target="_top">【整理】ANTLR v3的语法</a></p>
+</div>
+<div class="sect1">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="antlr_grammar_specific"></a>3.2. 详解部分ANTLR语法</h2></div></div></div>
+<div class="sect2">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="antlr_grammar_header"></a>3.2.1. ANTLR中的lexer和parser的header的含义</h3></div></div></div>
+<p>另外关于header方面的含义，总结如下：</p>
+<p><a class="link" href="http://www.crifan.com/antlr_header_lexer_and_parser_syntax_and_meaning/" target="_top">【整理】antlr中的.g语法文件中的lexer和parser的header的语法和含义</a></p>
+</div>
+<div class="sect2">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="antlr_grammar_v2_vs_v3"></a>3.2.2. antlr v2和antlr v3的语法对比</h3></div></div></div>
+<p>详见：</p>
+<p><a class="link" href="http://www.crifan.com/antlr_v2_vs_antlr_v3_grammar/" target="_top">【整理】antlr v2和antlr v3的语法的差异</a></p>
+</div>
+<div class="sect2">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="antlr_fragment"></a>3.2.3. ANTLR中的fragment</h3></div></div></div>
+<p>详见：</p>
+<p><a class="link" href="http://www.crifan.com/antlr_v3_syntax_fragment/" target="_top">【整理】antlr语法中的fragment</a></p>
+<p><a class="link" href="http://www.crifan.com/antlr_antlrworks_1_2_2_jar_error_error_cannot_find_symbol_symbol_method_newline/" target="_top">【已解决】用antlrworks-1.2.2.jar编译代码出错：error: cannot find symbol，g.NEWLINE();，symbol: method NEWLINE()</a></p>
+<p>至今，对于fragment，没有真正透彻的了解，所以可能会导致一些问题：</p>
+<p><a class="link" href="http://www.crifan.com/antlr_can_not_continue_to_recognize_the_input/" target="_top">【已解决】antlr调试时，antlr的语法是对的，但是却无法完全识别输入的测试数据，仅识别第一行</a></p>
+</div>
+</div>
+<p></p>
+<p>其他的，还有一些心得：</p>
+<p><a class="link" href="http://www.crifan.com/one_summary_when_match_string_use_antlr_grammar/" target="_top">【记录】写antrl的语法时的一个心得</a></p>
+<p></p>
+</div>
+<div class="chapter">
+<div class="titlepage"><div><div><h1 class="title">
+<a name="ch04_antlr_dev_tool"></a>第 4 章 ANTLR的开发工具</h1></div></div></div>
+<div class="toc">
+<p><b>目录</b></p>
+<dl class="toc">
+<dt><span class="sect1"><a href="#antlr_dev_env_command_line">4.1. ANTLR开发环境之命令行</a></span></dt>
+<dt><span class="sect1"><a href="#antlr_dev_env_antlrworks">4.2. ANTLR开发环境之ANTLRWorks</a></span></dt>
+<dd><dl>
+<dt><span class="sect2"><a href="#antlr_antlrworks_v1">4.2.1. ANTLRWorks v1：可运行的单独的jar包</a></span></dt>
+<dt><span class="sect2"><a href="#antlr_antlrworks_v2">4.2.2. ANTLRWorks v2：基于Netbeans的IDE</a></span></dt>
+</dl></dd>
+<dt><span class="sect1"><a href="#antlr_dev_env_eclipse_and_plugin">4.3. ANTLR开发环境之Eclipse+ANTLR的插件</a></span></dt>
+</dl>
+</div>
+<p>总结ANTLR的相关开发工具或环境：</p>
+<p>目前已知有几种常见方式：</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
+<li class="listitem">命令行式开发ANTLR</li>
+<li class="listitem">用ANTLRWorks去开发ANTLR</li>
+<li class="listitem">基于Eclipse去开发ANTLR</li>
+</ul></div>
+<p>下面分别介绍：</p>
+<div class="sect1">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="antlr_dev_env_command_line"></a>4.1. ANTLR开发环境之命令行</h2></div></div></div>
+<p>基于命令行下去开发ANTLR</p>
+<p>自己使用对应的命令，去从antlr的.g的文件，生成对应的lexer和parser等相关的代码</p>
+<p>然后再继续去用对应的代码，写测试代码去测试。</p>
+</div>
+<div class="sect1">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="antlr_dev_env_antlrworks"></a>4.2. ANTLR开发环境之ANTLRWorks</h2></div></div></div>
+<p>ANTLRWorks是IDE，是用Java写的。</p>
+<p>是官网提供的，官方推荐的ANTLR的开发环境。</p>
+<div class="sect2">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="antlr_antlrworks_v1"></a>4.2.1. ANTLRWorks v1：可运行的单独的jar包</h3></div></div></div>
+<p>相关总结：</p>
+<p><a class="link" href="http://www.crifan.com/summary_use_antlr_antlrworks_develop/" target="_top">【总结】使用ANTLR和ANTLRWorks的开发心得和注意事项</a></p>
+<p><a class="link" href="http://www.crifan.com/update_antlrworks_to_1_5rc1_actually_is_1_5rc2/" target="_top">【记录】将当前的ANTLRWorks 1.4.3，升级到ANTLRWorks 1.5.rc1，实际上是ANTLRWorks 1.5.rc2</a></p>
+<p><a class="link" href="http://www.crifan.com/try_antlrworks_1_5_development/" target="_top">【记录】尝试使用ANTLRWorks 1.5开发</a></p>
+</div>
+<div class="sect2">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="antlr_antlrworks_v2"></a>4.2.2. ANTLRWorks v2：基于Netbeans的IDE</h3></div></div></div>
+<p>ANTLRWorks v2，截至目前，感觉是：真心不好用。</p>
+<p>详见：</p>
+<p><a class="link" href="http://www.crifan.com/try_with_antlrworks_2_to_do_antlr_dev/" target="_top">【记录】尝试使用ANTLRWorks 2.0去进行ANTLR开发</a></p>
+<p><a class="link" href="http://www.crifan.com/antlrworks_2_0_g4_file_warning_supported_source_version_release_6_from_annotation_processor/" target="_top">【已解决】ANTLRWorks 2.0编译g4文件出现警告：warning: Supported source version ‘RELEASE_6′ from annotation processor</a></p>
+<p><a class="link" href="http://www.crifan.com/antlr_antlrworks_error_line_token_recognition_error_at/" target="_top">【已解决】ANTLRWorks 2.0编译Hello.g4文件结果出错：line 1:0 token recognition error at: ‘W’</a></p>
+</div>
+</div>
+<div class="sect1">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="antlr_dev_env_eclipse_and_plugin"></a>4.3. ANTLR开发环境之Eclipse+ANTLR的插件</h2></div></div></div>
+<p>基于成熟的Eclipse这个通用的IDE框架，加上对应的ANTLR插件，也是可以用来开发ANTLR的。</p>
+<p>只是效果貌似不是那么好而已。</p>
+<p>详见：</p>
+<p><a class="link" href="http://www.crifan.com/use_eclipse_to_do_antlr_development_create_project_and_build/" target="_top">【记录】使用Eclipse开发Antlr：创建antlr项目并编译</a></p>
+<p><a class="link" href="http://www.crifan.com/play_with_antlr_eclipse_plugin/" target="_top">【记录】折腾Antlr的Eclipse插件</a></p>
+<p><a class="link" href="http://www.crifan.com/eclipse_antlr_execution_was_cancelled_reason_code_generation_fails/" target="_top">【已解决】Eclipse中对于antlr去Debug(Java)时出错：execution was cancelled reason code generation fails</a></p>
+<p><a class="link" href="http://www.crifan.com/eclipse_antlr_an_internal_error_occurred_during_antlr_event_listener_for_input_string_false/" target="_top">【已解决】Eclipse中用Interpreter去运行Antlr代码出错：An internal error occurred during: "ANTLR Event Listener". For input string: "false"</a></p>
+<p><a class="link" href="http://www.crifan.com/antlr_eclipse_unable_to_connect_to_antlr_debugger_connection_refused_connect/" target="_top">【未解决】Eclipse中用Debug(Java)调试Antlr出错：unable to connect to ANTLR Debugger，Connection refused: connect</a></p>
+<p><a class="link" href="http://www.crifan.com/use_eclipse_to_do_antlr_development_how_to_debug_antlr_project/" target="_top">【记录】使用Eclipse开发Antlr：如何调试antlr项目</a></p>
+<p><a class="link" href="http://www.crifan.com/continue_try_use_eclipse_to_debug_antlr_project/" target="_top">【记录】继续折腾如何使用在Eclipse中调试Antlr项目</a></p>
+</div>
+</div>
+<div class="chapter">
+<div class="titlepage"><div><div><h1 class="title">
+<a name="ch05_antlr_common_issue"></a>第 5 章 ANLTR常见问题及解答</h1></div></div></div>
+<div class="toc">
+<p><b>目录</b></p>
+<dl class="toc">
+<dt><span class="sect1"><a href="#antlr_grammar_errors">5.1. ANTLR的语法方面常见问题及解决办法</a></span></dt>
+<dd><dl>
+<dt><span class="sect2"><a href="#antlr_never_be_matched">5.1.1. The following token definitions can never be matched because prior tokens match the same input</a></span></dt>
+<dt><span class="sect2"><a href="#antlr_multiple_alternatives">5.1.2. Decision can match input such as xxx using multiple alternatives</a></span></dt>
+<dt><span class="sect2"><a href="#antlr_mismatchedsetexception">5.1.3. MismatchedSetException和mismatched input xxx expecting set yyy</a></span></dt>
+<dt><span class="sect2"><a href="#antlr_unterminated_rule_detected_at">5.1.4. syntax error: unterminated rule detected at xxx while looking for lexer rule element</a></span></dt>
+<dt><span class="sect2"><a href="#antlr_noviablealtexception">5.1.5. NoViableAltException和no viable alternative at input xxx</a></span></dt>
+<dt><span class="sect2"><a href="#antlr_duplicate_token_type">5.1.6. Cannot generate the grammar because, duplicate token type xxx when collapsing subrule into set</a></span></dt>
+<dt><span class="sect2"><a href="#antlr_no_output_option">5.1.7. rewrite syntax or operator with no output option xxx</a></span></dt>
+<dt><span class="sect2"><a href="#antlr_unwantedtokenexception">5.1.8. UnwantedTokenException(found=xxx)</a></span></dt>
+<dt><span class="sect2"><a href="#antlr_earlyexitexception">5.1.9. org.antlr.runtime.EarlyExitException</a></span></dt>
+<dt><span class="sect2"><a href="#antlr_without_reference_on_left">5.1.10. reference to rewrite element include without reference on left of -&gt;</a></span></dt>
+</dl></dd>
+<dt><span class="sect1"><a href="#antlr_antlrworks_errors">5.2. ANTLRWorks方面常见问题及解决办法</a></span></dt>
+<dd><dl>
+<dt><span class="sect2"><a href="#antlrworks_cannot_run_program_javac">5.2.1. Compiler exception: java.io.IOException Cannot run program javac</a></span></dt>
+<dt><span class="sect2"><a href="#antlrworks_cannot_launch_debuggerTab_timeout">5.2.2. Cannot launch the debuggerTab. Time-out waiting to connect to the remote parser</a></span></dt>
+<dt><span class="sect2"><a href="#antlrworks_parser_error_expected">5.2.3. xxxParser.java error: &lt;xxx&gt; expected</a></span></dt>
+<dt><span class="sect2"><a href="#antlrworks_compiler_failed">5.2.4. Compiler failed with result code 1</a></span></dt>
+</dl></dd>
+</dl>
+</div>
+<p></p>
+<p>ANTLR开发期间，常常会遇到各种错误，现在总结如下：</p>
+<p></p>
+<div class="sect1">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="antlr_grammar_errors"></a>5.1. ANTLR的语法方面常见问题及解决办法</h2></div></div></div>
+<div class="sect2">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="antlr_never_be_matched"></a>5.1.1. The following token definitions can never be matched because prior tokens match the same input</h3></div></div></div>
+<p>在写ANTLR的grammar时，经常会遇到：</p>
+<pre class="screen">The following token definitions can never be matched because prior tokens match the same input</pre>
+<p>对于这样的问题，之前遇到过很多。</p>
+<p>后来，算是有点明白了，所以专门整理出来其原因和一般的解决思路：</p>
+<p><a class="link" href="http://www.crifan.com/summary_antlr_the_following_token_definitions_can_never_be_matched_because_prior_tokens_match_the_same_input/" target="_top">【整理】关于antlr中出错"The following token definitions can never be matched because prior tokens match the same input"的原因和解决思路</a></p>
+<p>另外，之前遇到过很多次，有需要的可以去参考：</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><a class="link" href="http://www.crifan.com/antlr_the_following_token_definitions_can_never_be_matched_because_prior_tokens_match_the_same_input/" target="_top">【未完全解决】antlr调试出错：The following token definitions can never be matched because prior tokens match the same input</a></li></ul></div>
+</div>
+<div class="sect2">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="antlr_multiple_alternatives"></a>5.1.2. Decision can match input such as xxx using multiple alternatives</h3></div></div></div>
+<p>在写ANTLR的grammar时，经常会遇到，多重匹配的问题：</p>
+<p>一般的小问题，都可以自己慢慢修改代码，而搞定的。</p>
+<p>比如：</p>
+<p><a class="link" href="http://www.crifan.com/antlr_decision_can_match_input_such_as_using_multiple_alternatives/" target="_top">【已解决】antrl代码编译出错：Decision can match input such as "’#include’" using multiple alternatives: 1, 2</a></p>
+<p>其他的，也有之前不够熟悉antlr时，没有解决的问题：</p>
+<p><a class="link" href="http://www.crifan.com/antlr_warning_decision_can_match_input_such_as_ws_using_multiple_alternatives_1_2/" target="_top">【未解决】antlr语法警告：warning: Decision can match input such as "WS" using multiple alternatives: 1, 2</a></p>
+<p>但是实际上，经过后来的折腾，早就解决了的。</p>
+<p></p>
+<p>但是，有时候，也会遇到比较难处理而始终搞不定的，比如：</p>
+<p><a class="link" href="http://www.crifan.com/antlr_decision_can_match_input_such_as_string_using_multiple_alternatives_1_2/" target="_top">【未解决】antlr中STRING出现多重匹配的问题:Decision can match input such as "STRING" using multiple alternatives: 1, 2</a></p>
+</div>
+<div class="sect2">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="antlr_mismatchedsetexception"></a>5.1.3. MismatchedSetException和mismatched input xxx expecting set yyy</h3></div></div></div>
+<p>写antlr语法期间，调试期间，遇到最多的，可能就属不匹配的问题了。</p>
+<p>对于不匹配的问题，其原因有各种各样，而导致不匹配的。</p>
+<p>目前已经遇到的，大致有这几类：</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
+<li class="listitem">后面所要匹配的内容，被前面已经匹配掉了，所以后面会报错，无法匹配
+                <p>比如：</p>
+<p><a class="link" href="http://www.crifan.com/antlr_support_eddl_multiple_language_string_with_rule/" target="_top">【已解决】antlr中支持EDDL的多国语言字符串其中用的是rule而非token</a></p>
+<p><a class="link" href="http://www.crifan.com/antlr_match_operator_mismated_input_amp_expecting_set_null/" target="_top">【已解决】antlr中匹配OPERATOR出错：mismatched input ‘&amp;’ expecting set null</a></p>
+<p><a class="link" href="http://www.crifan.com/antlr_parse_error_mismatchedsetexception_0_null/" target="_top">【已解决】antlr解析出错：MismatchedSetException(0!=null)</a></p>
+<p><a class="link" href="http://www.crifan.com/antlr_error_mismatchedtokenexception_0_0/" target="_top">【已解决】antlr解析双引号出错：MismatchedTokenException(0!=0)</a></p>
+<p><a class="link" href="http://www.crifan.com/antlr_can_not_recognize_double_quote/" target="_top">【未解决】antlr中不识别双引号(double quote)</a></p>
+<p><a class="link" href="http://www.crifan.com/antlr_v3_grammar_include_channel_hidden_parse_error_missingtokenexception/" target="_top">【基本解决】antlr v3，用包含{$channel=HIDDEN;}语法，结果解析出错：MissingTokenException</a></p>
+<p><a class="link" href="http://www.crifan.com/antlr_syntax_error_antlr_missingtokenexception_missing_eof/" target="_top">【已解决】error syntax error: antlr: MissingTokenException(inserted [@-1,0:0='&lt;missing EOF&gt;',&lt;-1&gt;,12:4] at ;)</a></p>
+</li>
+<li class="listitem">自己语法写错了，的确不匹配
+                <p>如果是自己语法不小心写错了，自己仔细调试后，还是可以发现。</p>
+<p>然后改为正确的所要匹配的内容，即可。</p>
+</li>
+</ul></div>
+<p></p>
+<p>ANTLR v4中，由于一些语法的变化，导致语法检查更严格，有时候也会导致此类mismatch的问题：</p>
+<p><a class="link" href="http://www.crifan.com/antlr_v4_line_mismatched_input_expecting/" target="_top">【已解决】antlr v4的语法出错：line 1:0 mismatched input ‘a’ expecting A</a></p>
+</div>
+<div class="sect2">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="antlr_unterminated_rule_detected_at"></a>5.1.4. syntax error: unterminated rule detected at xxx while looking for lexer rule element</h3></div></div></div>
+<p>详见：</p>
+<p><a class="link" href="http://www.crifan.com/antlr_input_syntax_error_unterminated_rule_missing_detected_at_c_eof_while/" target="_top">【已解决】antlr v4测试Hello结果出错：syntax error: unterminated rule (missing ‘;’) detected at ‘c ‘ while looking for lexer rule element</a></p>
+<p></p>
+</div>
+<div class="sect2">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="antlr_noviablealtexception"></a>5.1.5. NoViableAltException和no viable alternative at input xxx</h3></div></div></div>
+<p>详见：</p>
+<p><a class="link" href="http://www.crifan.com/antlr_still_error_no_viable_alternative_at_input/" target="_top">【已解决】antlr出错no viable alternative at input ‘__LBL__show’</a></p>
+<p></p>
+<p><a class="link" href="http://www.crifan.com/antlr_noviablealtexception_0_null_no_viable_alternative_at_input_fragment/" target="_top">【已解决】antlr解析字符串STRING出错：no viable alternative at input，对应的错误是NoViableAltException(0@[null])</a></p>
+<p><a class="link" href="http://www.crifan.com/antlr_error_mismatched_character_xxx_expecting_yyy/" target="_top">【已解决】antlr调试语法代码时出错：mismatched character ’5′ expecting ‘I’，no viable alternative at input ’7′</a></p>
+<p><a class="link" href="http://www.crifan.com/antlr_error_no_viable_alternative_at_input_noviablealtexception_0_null/" target="_top">【已解决】antlr代码执行出错：xxx.ddl line 16:13 no viable alternative at input ’1′，Recognition exception NoViableAltException(0@[null])</a></p>
+<p><a class="link" href="http://www.crifan.com/antlr_error_noviablealtexception_0_null/" target="_top">【已解决】antlr调试解析出错：NoViableAltException(0@[null])</a></p>
+<p><a class="link" href="http://www.crifan.com/antlr_syntax_error_antlr_noviablealtexception_37/" target="_top">【已解决】Antlr v3代码编译出错：syntax error: antlr: NoViableAltException(37@[])</a></p>
+</div>
+<div class="sect2">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="antlr_duplicate_token_type"></a>5.1.6. Cannot generate the grammar because, duplicate token type xxx when collapsing subrule into set</h3></div></div></div>
+<p>如果ANTLR语法写的有问题的话，则是无法生成对应的代码的。</p>
+<p>错误有多种可能：</p>
+<p>比如是由于符号类型冲突而无法生成代码，详见：</p>
+<p><a class="link" href="http://www.crifan.com/antlr_cannot_generate_the_grammar_because_duplicate_token_type_when_collapsing_subrule_into_set/" target="_top">【已解决】Antlr语法编译出错：Cannot generate the grammar because, duplicate token type COMPOSITE_OPERATOR when collapsing subrule into set</a></p>
+</div>
+<div class="sect2">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="antlr_no_output_option"></a>5.1.7. rewrite syntax or operator with no output option xxx</h3></div></div></div>
+<p>有时候，是在ANTLR的option中，添加了一些不支持的参数或选项，则导致此错误。</p>
+<p>比如：</p>
+<p><a class="link" href="http://www.crifan.com/antlr_rewrite_syntax_or_operator_with_no_output_option_setting_output_ast/" target="_top">【已解决】antlr语法出错：rewrite syntax or operator with no output option; setting output=AST</a></p>
+</div>
+<div class="sect2">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="antlr_unwantedtokenexception"></a>5.1.8. UnwantedTokenException(found=xxx)</h3></div></div></div>
+<p>比如：</p>
+<p><a class="link" href="http://www.crifan.com/antlr_error_unwantedtokenexception_found/" target="_top">【已解决】antlr调试解析出错：UnwantedTokenException(found=xxx)</a></p>
+</div>
+<div class="sect2">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="antlr_earlyexitexception"></a>5.1.9. org.antlr.runtime.EarlyExitException</h3></div></div></div>
+<p>比如：</p>
+<p><a class="link" href="http://www.crifan.com/antlr_v3_grammar_inclue_skip_parse_error_org_antlr_runtime_earlyexitexception/" target="_top">【基本解决】antlr v3中包含{skip();}的语法，调试解析时出错：org.antlr.runtime.EarlyExitException</a></p>
+</div>
+<div class="sect2">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="antlr_without_reference_on_left"></a>5.1.10. reference to rewrite element include without reference on left of -&gt;</h3></div></div></div>
+<p>比如：</p>
+<p><a class="link" href="http://www.crifan.com/antlr_reference_to_rewrite_element_include_without_reference_on_left_of/" target="_top">【已解决】antlr代码编译出错：reference to rewrite element include without reference on left of -&gt;</a></p>
+</div>
+</div>
+<div class="sect1">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="antlr_antlrworks_errors"></a>5.2. ANTLRWorks方面常见问题及解决办法</h2></div></div></div>
+<p>ANTLRWorks使用期间，也常会遇到很多问题，比如：</p>
+<div class="sect2">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="antlrworks_cannot_run_program_javac"></a>5.2.1. Compiler exception: java.io.IOException Cannot run program javac</h3></div></div></div>
+<p><a class="link" href="http://www.crifan.com/antlrworks_debug_error_compiler_exception_java_io_ioexception_cannot_run_program_javac_createprocess_error_2/" target="_top">【已解决】antrlworks调试出错：Compiler exception: java.io.IOException Cannot run program "\javac": CreateProcess error=2 The system cannot find the file specified</a></p>
+</div>
+<div class="sect2">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="antlrworks_cannot_launch_debuggerTab_timeout"></a>5.2.2. Cannot launch the debuggerTab. Time-out waiting to connect to the remote parser</h3></div></div></div>
+<p><a class="link" href="http://www.crifan.com/antlrworks_cannot_launch_the_debuggertab_time_out_waiting_to_connect_to_the_remote_parser/" target="_top">【已解决】ANTLRWorks调试出错：Cannot launch the debuggerTab. Time-out waiting to connect to the remote parser</a></p>
+</div>
+<div class="sect2">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="antlrworks_parser_error_expected"></a>5.2.3. xxxParser.java error: &lt;xxx&gt; expected</h3></div></div></div>
+<p><a class="link" href="http://www.crifan.com/antlrworks_debug_error_for_parser_java_error_identifier_expected/" target="_top">【已解决】antlrworks中调试出错：xxxParser.java:1870: error: &lt;identifier&gt; expected</a></p>
+</div>
+<div class="sect2">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="antlrworks_compiler_failed"></a>5.2.4. Compiler failed with result code 1</h3></div></div></div>
+<p>由于antlrworks本身版本的问题，而导致编译出错的：</p>
+<p><a class="link" href="http://www.crifan.com/antlrworks_1_5_compiler_failed_with_result_code_1/" target="_top">【已解决】ANTLRWorks 1.5编译代码出错：Compiler failed with result code 1</a></p>
+</div>
+</div>
+</div>
+<div class="chapter">
+<div class="titlepage"><div><div><h1 class="title">
+<a name="ch06_antlr_summary"></a>第 6 章 ANTLR开发经验总结</h1></div></div></div>
+<div class="toc">
+<p><b>目录</b></p>
+<dl class="toc">
+<dt><span class="sect1"><a href="#antlrworks_usage">6.1. ANTLRWorks使用心得</a></span></dt>
+<dd><dl><dt><span class="sect2"><a href="#antlrworks_crash">6.1.1. ANTLRWorks有时候会挂掉</a></span></dt></dl></dd>
+<dt><span class="sect1"><a href="#antlrworks_preprocess">6.2. ANTLR的预处理Preprocess</a></span></dt>
+<dd><dl>
+<dt><span class="sect2"><a href="#antlr_self_not_support_preprocess">6.2.1. ANTLR自身是不支持预处理功能的</a></span></dt>
+<dt><span class="sect2"><a href="#use_antlr_do_preprocess">6.2.2. 可以使用ANTLR去实现预处理的功能</a></span></dt>
+</dl></dd>
+<dt><span class="sect1"><a href="#antlr_exception">6.3. ANTLR的异常处理</a></span></dt>
+<dd><dl>
+<dt><span class="sect2"><a href="#antlr_exit_when_error">6.3.1. ANTLR出错异常时就退出（不继续恢复错误和继续运行）</a></span></dt>
+<dt><span class="sect2"><a href="#antlr_show_more_when_error">6.3.2. ANTLR出错异常时显示更多详细信息</a></span></dt>
+</dl></dd>
+<dt><span class="sect1"><a href="#antlr_recursive">6.4. ANTLR的递归</a></span></dt>
+<dt><span class="sect1"><a href="#antlr_parse_performance">6.5. ANTLR解析性能</a></span></dt>
+<dt><span class="sect1"><a href="#antlr_conditional_match">6.6. ANTLR中的条件性匹配</a></span></dt>
+<dt><span class="sect1"><a href="#antlr_resourced_download">6.7. ANTLR相关资源下载</a></span></dt>
+<dd><dl>
+<dt><span class="sect2"><a href="#antlr_sample_code_download">6.7.1. ANTLR语法示例参考代码</a></span></dt>
+<dt><span class="sect2"><a href="#antlr_dev_tool_download">6.7.2. ANTLR相关开发工具下载</a></span></dt>
+<dt><span class="sect2"><a href="#antlr_doc_download">6.7.3. ANTLR相关资料和文档下载</a></span></dt>
+</dl></dd>
+<dt><span class="sect1"><a href="#antlr_debug_vs_non_debug">6.8. ANTLR中debug和非debug版本</a></span></dt>
+<dd><dl><dt><span class="sect2"><a href="#antlr_ast_no_parent_child_relation">6.8.1. ANTLR生成的AST中没有节点的父子关系</a></span></dt></dl></dd>
+</dl>
+</div>
+<p>对于ANLTR开发方面的经验总结如下：</p>
+<p></p>
+<p></p>
+<p></p>
+<div class="sect1">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="antlrworks_usage"></a>6.1. ANTLRWorks使用心得</h2></div></div></div>
+<p>在使用ANTLR的最主要的开发工具：ANTLRWorks期间，遇到很多问题，也总结出很多相关技巧。</p>
+<p>现整理如下，供参考：</p>
+<p><a class="link" href="http://www.crifan.com/summary_antlr_antlrworks_bug_note_experience/" target="_top">【整理】antlrworks使用心得，经验总结，注意事项，bug总结</a></p>
+<p><a class="link" href="http://www.crifan.com/antlrworks_compiler_exception_java_io_ioexception_cannot_run_program_jre6_bin_javac_createprocess_error_2/" target="_top">【已解决】antlrworks再次出错：Compiler exception: java.io.IOException Cannot run program "C:\Program Files(x86)\Java\jre6\bin\javac": CreateProcess error=2</a></p>
+<div class="sect2">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="antlrworks_crash"></a>6.1.1. ANTLRWorks有时候会挂掉</h3></div></div></div>
+<p>比如之前遇到的：</p>
+<p><a class="link" href="http://www.crifan.com/some_time_antlr_antlrworks_crash_log/" target="_top">【记录】antlr的antlrworks某次挂掉的log</a></p>
+</div>
+</div>
+<div class="sect1">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="antlrworks_preprocess"></a>6.2. ANTLR的预处理Preprocess</h2></div></div></div>
+<div class="sect2">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="antlr_self_not_support_preprocess"></a>6.2.1. ANTLR自身是不支持预处理功能的</h3></div></div></div>
+<p>ANTLR本身，对于预处理方面是否支持，答案是不支持的。</p>
+<p>详见：</p>
+<p><a class="link" href="http://www.crifan.com/antlr_about_support_preprocess_or_not/" target="_top">【记录】关于ANTLR中对于预处理的支持：以为支持普通文件的预处理呢，但是实际上是ANTLR自身识别你写的语法文件的预处理</a></p>
+<p></p>
+</div>
+<div class="sect2">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="use_antlr_do_preprocess"></a>6.2.2. 可以使用ANTLR去实现预处理的功能</h3></div></div></div>
+<p>而对于，真正的用ANTLR去实现预处理这个功能，可以参考之前我的一些折腾：</p>
+<p></p>
+<p><a class="link" href="http://www.crifan.com/c_preprocess_cpp_g_convert_antlr_v2_to_antlr_v3_version/" target="_top">【记录】将antlr v2的C/C++的preprocess，即cpp.g，转换为antlr v3</a></p>
+<p><a class="link" href="http://www.crifan.com/use_antlr_preprocess_a_new_eddl_file_remove_upsupported_eddl_element/" target="_top">【记录】用antlr的preprocess去预处理一个新的eddl文件去除eddl中不支持的元素对应的文件内容</a></p>
+<p><a class="link" href="http://www.crifan.com/summary_antlr_v2_cpplexer_g_multiple_para_define_implement_macro_replacement/" target="_top">【整理】分析cppLexer.g中的多参数的#define实现宏替换的逻辑过程</a></p>
+<p><a class="link" href="http://www.crifan.com/antlr_support_preprocess_define_replacement_no_para/" target="_top">【记录】让antlr的预处理，支持无参数的宏替换</a></p>
+<p><a class="link" href="http://www.crifan.com/antlr_preprocess_recursive_include/" target="_top">【记录】尝试用antlr处理C代码中的#include</a></p>
+</div>
+</div>
+<div class="sect1">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="antlr_exception"></a>6.3. ANTLR的异常处理</h2></div></div></div>
+<p>ANTLR中，对于异常处理，支持的很好，功能很丰富了。</p>
+<p>对此，我们可以利用ANTLR的异常方面的信息，去实现一些自己所需要的功能，比如：</p>
+<p><a class="link" href="http://www.crifan.com/antlr_exception_handling_check_whether_a_tree_node_is_exception/" target="_top">【记录】antlr异常处理：在ParseTree去getTree之后，判断某个树节点是否出现异常</a></p>
+<p></p>
+<p>其中，关于异常处理的方面的经验和心得，可以先去参考：</p>
+<p><a class="link" href="http://www.crifan.com/record_antlr_exception_handling_learing_summary/" target="_top">【记录】Antlr中的异常处理学习笔记</a></p>
+<p><a class="link" href="http://www.crifan.com/summary_antlr_exception_handling_type_main_type_is_recognitionexception/" target="_top">【整理】antlr的Exception Handling异常处理中的异常Exception的类型</a></p>
+<p>其他的一些，关于异常处理方面的折腾，供参考：</p>
+<p><a class="link" href="http://www.crifan.com/try_implement_antlr_v3_error_handling_and_error_recovery/" target="_top">【记录】尝试折腾antlr v3的异常处理和错误恢复：VARIABLE的CLASS的值INPUT故意写错为INPUT1</a></p>
+<p></p>
+<p></p>
+<p></p>
+<p>对于ANTLR的异常处理方面，有更多可以扩展和利用的空间：</p>
+<div class="sect2">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="antlr_exit_when_error"></a>6.3.1. ANTLR出错异常时就退出（不继续恢复错误和继续运行）</h3></div></div></div>
+<p>ANTLR遇到错误，出现异常时，其默认的机制中，就已经支持：自动尝试恢复错误，然后回退到前一步，继续选择别的分支路径，继续执行下去</p>
+<p>而希望实现：当ANTLR解析出错时，就退出，则也是支持的。</p>
+<p>详见：</p>
+<p><a class="link" href="http://www.crifan.com/antlr_exception_handling_quit_while_first_error/" target="_top">【记录】antlr的异常处理：遇到第一个错误就停止和退出</a></p>
+<p><a class="link" href="http://www.crifan.com/antlr_preprocess_quit_while_first_exception_for_new_hart_eddl_file/" target="_top">【已解决】在用antlr预处理一个新的hart的eddl文件时希望第一次出错就退出</a></p>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note: ANTLR的API变化导致部分函数失效">
+<tr>
+<td rowspan="2" align="center" valign="top" width="25"><img alt="[注意]" src="http://www.crifan.com/files/res/docbook/images/note.png"></td>
+<th align="left">
+<a name="nt.antlr_api_change"></a>ANTLR的API变化导致部分函数失效</th>
+</tr>
+<tr><td align="left" valign="top">
+<p>之前遇到的，由于ANTLR的API的变化，导致函数接口变化</p>
+<p>导致参考别人的ANTLR的示例代码时，会出错。需要去找到最新的API，才能继续使用的。</p>
+<p>详见：</p>
+<p><a class="link" href="http://www.crifan.com/antlr_debug_compile_error_recoverfrommismatchedset_intstream_recognitionexception_bitset/" target="_top">【已解决】antlr中尝试出错就退出，结果编译parser出错：error: recoverFromMismatchedSet(IntStream,RecognitionException,BitSet) in xxxParser cannot override recoverFromMismatchedSet(IntStream,RecognitionException,BitSet) in BaseRecognizer，return type void is not compatible with Object</a></p>
+</td></tr>
+</table></div>
+</div>
+<div class="sect2">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="antlr_show_more_when_error"></a>6.3.2. ANTLR出错异常时显示更多详细信息</h3></div></div></div>
+<p>ANTLR解析期间，遇到错误，会自动抛出异常，会打印出一些错误信息。</p>
+<p>其默认的异常出错信息，已经相对比较全面了。</p>
+<p>但是如果想要输出更多的，其他方面的，详细出错信息，则可以参考：</p>
+<p><a class="link" href="http://www.crifan.com/antlr_preprocess_eddl_file_mismatechedtokenexception_output_more_detailed_info/" target="_top">【记录】用antlr预处理异常MismatchedTokenException时能输出更详细的信息</a></p>
+<p><a class="link" href="http://www.crifan.com/try_use_antlr_exception_handling_paraphrase_to_give_more_user_friendly_error_message/" target="_top">【记录】尝试antlr的paraphrase去提供对于用户更好友好的错误信息</a></p>
+<p><a class="link" href="http://www.crifan.com/record_playing_with_antlr_error_handling_report_mode_info_when_error/" target="_top">【记录】折腾antlr的异常处理：使得当初错时，输出更详细的错误信息，包含堆栈信息</a></p>
+</div>
+</div>
+<div class="sect1">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="antlr_recursive"></a>6.4. ANTLR的递归</h2></div></div></div>
+<p>ANTLR中，ANTLR v4之前，是不支持左递归的。</p>
+<p></p>
+<p>当然，在有些时候，也是可以使用递归的。</p>
+<p>比如：</p>
+<p></p>
+<p>而对于ANTLR中的递归的话，尤其是在Lexer中，有时候会很难实现自己所要的效果。</p>
+<p>详见：</p>
+<p><a class="link" href="http://www.crifan.com/antlr_settext_not_work_for_recursive_token/" target="_top">【未解决】antlr中setText()在递归嵌套的token中无效</a></p>
+<p><a class="link" href="http://www.crifan.com/antlr_define_replacement_can_not_remove_macro_text/" target="_top">【未解决】antlr实现#define的宏的多层（递归）替换后，去不掉宏的内容</a></p>
+<p><a class="link" href="http://www.crifan.com/antlr_grammar_match_recursive/" target="_top">【基本解决】用antlr匹配嵌套递归的代码</a></p>
+</div>
+<div class="sect1">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="antlr_parse_performance"></a>6.5. ANTLR解析性能</h2></div></div></div>
+<p>关于ANTLR的解析性能，相对很不错了。</p>
+<p>只是，有时候，自己的实现不够好的话，还是需要想办法，再去优化性能的：</p>
+<p><a class="link" href="http://www.crifan.com/try_to_enhance_antlr_lexer_and_parser_parse_speed_performance/" target="_top">【记录】尝试优化antlr的lexer和parser以提高继续速度（解析性能）</a></p>
+</div>
+<div class="sect1">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="antlr_conditional_match"></a>6.6. ANTLR中的条件性匹配</h2></div></div></div>
+<p>详见：</p>
+<p><a class="link" href="http://www.crifan.com/antlr_v3_conditional_match_in_lexer/" target="_top">【已解决】antlr v3的lexer的条件性匹配</a></p>
+</div>
+<div class="sect1">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="antlr_resourced_download"></a>6.7. ANTLR相关资源下载</h2></div></div></div>
+<div class="sect2">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="antlr_sample_code_download"></a>6.7.1. ANTLR语法示例参考代码</h3></div></div></div>
+<p>一些可供参考的antlr的语法源码：</p>
+<p><a class="link" href="http://www.crifan.com/add_ansi_c_parse_for_parse_eddl_method_of_antlr/" target="_top">【记录】antlr中解析EDDL时解析METHOD中的C代码</a></p>
+<p><a class="link" href="http://www.crifan.com/summary_some_other_antlr_material/" target="_top">【整理】关于antlr的一些资料</a></p>
+</div>
+<div class="sect2">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="antlr_dev_tool_download"></a>6.7.2. ANTLR相关开发工具下载</h3></div></div></div>
+<p><a class="link" href="http://www.crifan.com/download_antlr_4_0_rc_1_complete_jar/" target="_top">【资源下载】antlr-4.0-rc-1-complete.jar</a></p>
+</div>
+<div class="sect2">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="antlr_doc_download"></a>6.7.3. ANTLR相关资料和文档下载</h3></div></div></div>
+<p><a class="link" href="http://www.crifan.com/download_antlr_the_definitive_antlr_reference_v2_v3_v4/" target="_top">【资料下载】ANTLR的最全的官方文档：The Definitive ANTLR Reference：v2，v3，v4版本都有下载</a></p>
+</div>
+</div>
+<div class="sect1">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="antlr_debug_vs_non_debug"></a>6.8. ANTLR中debug和非debug版本</h2></div></div></div>
+<p>ANTLR中，对于用.g所生成的代码，有两种模式：debug版本和非debug版本</p>
+<p>是否是debug，会有很大区别：</p>
+<p>比如就会导致后续测试代码出错还是正常运行：</p>
+<p><a class="link" href="http://www.crifan.com/android_debug_antlr_parser_error_for_xxx_return/" target="_top">【问题】android中调试antlr时执行xxx_return去获得parserResult时出错</a></p>
+<p>比如会影响到是否可以获得生成的AST中节点之间的父子关系：</p>
+<div class="sect2">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="antlr_ast_no_parent_child_relation"></a>6.8.1. ANTLR生成的AST中没有节点的父子关系</h3></div></div></div>
+<p>之前遇到的问题：对于ANTLR来说，默认所生成的AST中，没有节点的父子关系。</p>
+<p>经过一番折腾，最终是找到了，如何获得节点的父子关系：</p>
+<p><a class="link" href="http://www.crifan.com/antlr_ast_no_parent_child_relation/" target="_top">【已解决】antlr中获得的AST的CommonTree这个树的变量中，不存在所想要的父子(parent,child)关系</a></p>
+</div>
+</div>
+</div>
+<div class="bibliography">
+<div class="titlepage"><div><div><h1 class="title">
+<a name="reference"></a>参考书目</h1></div></div></div>
+<div class="bibliomixed">
+<a name="ref.what_is_antlr"></a><p class="bibliomixed">[1] 
+  <span class="bibliosource"><a class="link" href="http://www.antlr3.org" target="_top">What is ANTLR?</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.token_never_match"></a><p class="bibliomixed">[2] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/summary_antlr_the_following_token_definitions_can_never_be_matched_because_prior_tokens_match_the_same_input/" target="_top">【整理】关于antlr中出错"The following token definitions can never be matched because prior tokens match the same input"的原因和解决思路</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_related_background"></a><p class="bibliomixed">[3] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_related_background_knowledge/" target="_top">【整理】和ANTLR有关的历史和背景知识</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.summary_antlr_history_version"></a><p class="bibliomixed">[4] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/summary_antlr_history_version/" target="_top">【整理】antlr的历史版本</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.summary_antlr_usage_example"></a><p class="bibliomixed">[5] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/summary_antlr_usage_example/" target="_top">【整理】ANTLR应用案例</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.summary_antlr_tech_advantage"></a><p class="bibliomixed">[6] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/summary_technology_advantage_for_antlr/" target="_top">【整理】antlr在技术上的优势</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.summary_antlr_dev_related"></a><p class="bibliomixed">[7] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/summary_antlr_development_related_things/" target="_top">【整理】与antlr开发相关的一些东西：StringTemplate，antlr的IDE(antlrworks,Eclipse的antlr插件)</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_basic_tutorial"></a><p class="bibliomixed">[8] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_basic_tutorial/" target="_top">ANTLR Basic Tutorial</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.build_antlr_v4_env"></a><p class="bibliomixed">[9] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/build_up_antlr_v4_environment/" target="_top">【记录】搭建ANTLR v4开发环境</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.hello_r_tree_no_output"></a><p class="bibliomixed">[10] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_v4_grun_hello_r_tree_no_output/" target="_top">【已解决】antlr v4中运行grun Hello r -tree，结果无输出</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.cannot_load_hello_as_lexer_or_parser"></a><p class="bibliomixed">[11] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_v4_grun_hello_r_tree_cant_load_hello_as_lexer_or_parser/" target="_top">【已解决】运行grun Hello r -tree出错：Can’t load Hello as lexer or parser</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_into_android_app"></a><p class="bibliomixed">[12] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/merge_antlr_into_android_adt/" target="_top">【记录】把ANTLR v3整合到Android的App中</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.use_treeparser_in_java"></a><p class="bibliomixed">[13] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/integrate_parse_tree_using_treeparser_in_antlr_for_java/" target="_top">【记录】把通过TreeParser去解析树Tree的功能集成到(Android的)Java环境中</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_detailed_syntax"></a><p class="bibliomixed">[14] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_detailed_syntax_for_element_sets_labels_tree_construction_operators/" target="_top">【整理】antlr中的各种语法：集合元素(Element Sets)，标签元素(Element Labels)，构造树操作符(Tree construction operators)</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_v3_syntax"></a><p class="bibliomixed">[15] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/summary_antlr_v3_syntax_grammar/" target="_top">【整理】ANTLR v3的语法</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_header_meaning"></a><p class="bibliomixed">[16] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_header_lexer_and_parser_syntax_and_meaning/" target="_top">【整理】antlr中的.g语法文件中的lexer和parser的header的语法和含义</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_v2_vs_v3"></a><p class="bibliomixed">[17] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_v2_vs_antlr_v3_grammar/" target="_top">【整理】antlr v2和antlr v3的语法的差异</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_syntax_fragment"></a><p class="bibliomixed">[18] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_v3_syntax_fragment/" target="_top">【整理】antlr语法中的fragment</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.cannot_find_symbol"></a><p class="bibliomixed">[19] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_antlrworks_1_2_2_jar_error_error_cannot_find_symbol_symbol_method_newline/" target="_top">【已解决】用antlrworks-1.2.2.jar编译代码出错：error: cannot find symbol，g.NEWLINE();，symbol: method NEWLINE()</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_only_recog_first_line"></a><p class="bibliomixed">[20] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_can_not_continue_to_recognize_the_input/" target="_top">【已解决】antlr调试时，antlr的语法是对的，但是却无法完全识别输入的测试数据，仅识别第一行</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.match_str_use_antlr"></a><p class="bibliomixed">[21] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/one_summary_when_match_string_use_antlr_grammar/" target="_top">【记录】写antrl的语法时的一个心得</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.use_antlrworks_dev"></a><p class="bibliomixed">[22] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/summary_use_antlr_antlrworks_develop/" target="_top">【总结】使用ANTLR和ANTLRWorks的开发心得和注意事项</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlrworks_1_5_rc1_rc2"></a><p class="bibliomixed">[23] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/update_antlrworks_to_1_5rc1_actually_is_1_5rc2/" target="_top">【记录】将当前的ANTLRWorks 1.4.3，升级到ANTLRWorks 1.5.rc1，实际上是ANTLRWorks 1.5.rc2</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlrworks_2_antlr_dev"></a><p class="bibliomixed">[24] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/try_with_antlrworks_2_to_do_antlr_dev/" target="_top">【记录】尝试使用ANTLRWorks 2.0去进行ANTLR开发</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.warning_supported_source_version_release_6"></a><p class="bibliomixed">[25] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlrworks_2_0_g4_file_warning_supported_source_version_release_6_from_annotation_processor/" target="_top">【已解决】ANTLRWorks 2.0编译g4文件出现警告：warning: Supported source version ‘RELEASE_6′ from annotation processor</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.line_token_recog_error"></a><p class="bibliomixed">[26] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_antlrworks_error_line_token_recognition_error_at/" target="_top">【已解决】ANTLRWorks 2.0编译Hello.g4文件结果出错：line 1:0 token recognition error at: ‘W’</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.eclipse_antlr_dev"></a><p class="bibliomixed">[27] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/use_eclipse_to_do_antlr_development_create_project_and_build/" target="_top">【记录】使用Eclipse开发Antlr：创建antlr项目并编译</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.play_antlr_eclipse_plugin"></a><p class="bibliomixed">[28] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/play_with_antlr_eclipse_plugin/" target="_top">【记录】折腾Antlr的Eclipse插件</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.execution_was_cancelled"></a><p class="bibliomixed">[29] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/eclipse_antlr_execution_was_cancelled_reason_code_generation_fails/" target="_top">【已解决】Eclipse中对于antlr去Debug(Java)时出错：execution was cancelled reason code generation fails</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.eclipse_antlr_internal_error_occurred_for_input_string"></a><p class="bibliomixed">[30] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/eclipse_antlr_an_internal_error_occurred_during_antlr_event_listener_for_input_string_false/" target="_top">【已解决】Eclipse中用Interpreter去运行Antlr代码出错：An internal error occurred during: "ANTLR Event Listener". For input string: "false"</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.connection_refused_connect"></a><p class="bibliomixed">[31] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_eclipse_unable_to_connect_to_antlr_debugger_connection_refused_connect/" target="_top">【未解决】Eclipse中用Debug(Java)调试Antlr出错：unable to connect to ANTLR Debugger，Connection refused: connect</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.eclipse_debug_antlr_project"></a><p class="bibliomixed">[32] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/use_eclipse_to_do_antlr_development_how_to_debug_antlr_project/" target="_top">【记录】使用Eclipse开发Antlr：如何调试antlr项目</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.continue_try_eclipse_antlr"></a><p class="bibliomixed">[33] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/continue_try_use_eclipse_to_debug_antlr_project/" target="_top">【记录】继续折腾如何使用在Eclipse中调试Antlr项目</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.token_definitions_never_be_matched"></a><p class="bibliomixed">[34] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/summary_antlr_the_following_token_definitions_can_never_be_matched_because_prior_tokens_match_the_same_input/" target="_top">【整理】关于antlr中出错"The following token definitions can never be matched because prior tokens match the same input"的原因和解决思路</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_the_following_token_definitions"></a><p class="bibliomixed">[35] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_the_following_token_definitions_can_never_be_matched_because_prior_tokens_match_the_same_input/" target="_top">【未完全解决】antlr调试出错：The following token definitions can never be matched because prior tokens match the same input</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_using_multiple_alternatives"></a><p class="bibliomixed">[36] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_decision_can_match_input_such_as_using_multiple_alternatives/" target="_top">【已解决】antrl代码编译出错：Decision can match input such as "’#include’" using multiple alternatives: 1, 2</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_ws_using_multiple_alternatives_1_2"></a><p class="bibliomixed">[37] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_warning_decision_can_match_input_such_as_ws_using_multiple_alternatives_1_2/" target="_top">【未解决】antlr语法警告：warning: Decision can match input such as "WS" using multiple alternatives: 1, 2</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_string_using_multiple_alternatives_1_2"></a><p class="bibliomixed">[38] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_decision_can_match_input_such_as_string_using_multiple_alternatives_1_2/" target="_top">【未解决】antlr中STRING出现多重匹配的问题:Decision can match input such as "STRING" using multiple alternatives: 1, 2</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_support_eddl_multiple_language"></a><p class="bibliomixed">[39] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_support_eddl_multiple_language_string_with_rule/" target="_top">【已解决】antlr中支持EDDL的多国语言字符串其中用的是rule而非token</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_mismated_input_expecting_set_null"></a><p class="bibliomixed">[40] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_match_operator_mismated_input_amp_expecting_set_null/" target="_top">【已解决】antlr中匹配OPERATOR出错：mismatched input ‘&amp;’ expecting set null</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_mismatchedsetexception_0_null"></a><p class="bibliomixed">[41] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_parse_error_mismatchedsetexception_0_null/" target="_top">【已解决】antlr解析出错：MismatchedSetException(0!=null)</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_error_mismatchedtokenexception_0_0"></a><p class="bibliomixed">[42] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_error_mismatchedtokenexception_0_0/" target="_top">【已解决】antlr解析双引号出错：MismatchedTokenException(0!=0)</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_can_not_recognize_double_quote"></a><p class="bibliomixed">[43] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_can_not_recognize_double_quote/" target="_top">【未解决】antlr中不识别双引号(double quote)</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_channel_hidden_missingtokenexception"></a><p class="bibliomixed">[44] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_v3_grammar_include_channel_hidden_parse_error_missingtokenexception/" target="_top">【基本解决】antlr v3，用包含{$channel=HIDDEN;}语法，结果解析出错：MissingTokenException</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_missingtokenexception_missing_eof"></a><p class="bibliomixed">[45] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_syntax_error_antlr_missingtokenexception_missing_eof/" target="_top">【已解决】error syntax error: antlr: MissingTokenException(inserted [@-1,0:0='&lt;missing EOF&gt;',&lt;-1&gt;,12:4] at ;)</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_v4_line_mismatched_input_expecting"></a><p class="bibliomixed">[46] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_v4_line_mismatched_input_expecting/" target="_top">【已解决】antlr v4的语法出错：line 1:0 mismatched input ‘a’ expecting A</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_unterminated_rule_detected_at_c_eof_while"></a><p class="bibliomixed">[47] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_input_syntax_error_unterminated_rule_missing_detected_at_c_eof_while/" target="_top">【已解决】antlr v4测试Hello结果出错：syntax error: unterminated rule (missing ‘;’) detected at ‘c ‘ while looking for lexer rule element</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_still_error_no_viable_alternative_at_input"></a><p class="bibliomixed">[48] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_still_error_no_viable_alternative_at_input/" target="_top">【已解决】antlr出错no viable alternative at input ‘__LBL__show’</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_no_viable_alternative_at_input_fragment"></a><p class="bibliomixed">[49] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_noviablealtexception_0_null_no_viable_alternative_at_input_fragment/" target="_top">【已解决】antlr解析字符串STRING出错：no viable alternative at input，对应的错误是NoViableAltException(0@[null])</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_error_mismatched_character_expecting"></a><p class="bibliomixed">[50] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_error_mismatched_character_xxx_expecting_yyy/" target="_top">【已解决】antlr调试语法代码时出错：mismatched character ’5′ expecting ‘I’，no viable alternative at input ’7′</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_input_noviablealtexception_0_null"></a><p class="bibliomixed">[51] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_error_no_viable_alternative_at_input_noviablealtexception_0_null/" target="_top">【已解决】antlr代码执行出错：xxx.ddl line 16:13 no viable alternative at input ’1′，Recognition exception NoViableAltException(0@[null])</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_error_noviablealtexception_0_null"></a><p class="bibliomixed">[52] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_error_noviablealtexception_0_null/" target="_top">【已解决】antlr调试解析出错：NoViableAltException(0@[null])</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_syntax_error_antlr_noviablealtexception_37"></a><p class="bibliomixed">[53] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_syntax_error_antlr_noviablealtexception_37/" target="_top">【已解决】Antlr v3代码编译出错：syntax error: antlr: NoViableAltException(37@[])</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_duplicate_token_type_when_collapsing_subrule_into_set"></a><p class="bibliomixed">[54] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_cannot_generate_the_grammar_because_duplicate_token_type_when_collapsing_subrule_into_set/" target="_top">【已解决】Antlr语法编译出错：Cannot generate the grammar because, duplicate token type COMPOSITE_OPERATOR when collapsing subrule into set</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_rewrite_syntax_or_operator_with_no_output_option"></a><p class="bibliomixed">[55] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_rewrite_syntax_or_operator_with_no_output_option_setting_output_ast/" target="_top">【已解决】antlr语法出错：rewrite syntax or operator with no output option; setting output=AST</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_error_unwantedtokenexception_found"></a><p class="bibliomixed">[56] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_error_unwantedtokenexception_found/" target="_top">【已解决】antlr调试解析出错：UnwantedTokenException(found=xxx)</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_org_antlr_runtime_earlyexitexception"></a><p class="bibliomixed">[57] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_v3_grammar_inclue_skip_parse_error_org_antlr_runtime_earlyexitexception/" target="_top">【基本解决】antlr v3中包含{skip();}的语法，调试解析时出错：org.antlr.runtime.EarlyExitException</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_reference_to_rewrite_element_include_without_reference_on_left_of"></a><p class="bibliomixed">[58] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_reference_to_rewrite_element_include_without_reference_on_left_of/" target="_top">【已解决】antlr代码编译出错：reference to rewrite element include without reference on left of -&gt;</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlrworks_java_io_ioexception_cannot_run_program_javac"></a><p class="bibliomixed">[59] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlrworks_debug_error_compiler_exception_java_io_ioexception_cannot_run_program_javac_createprocess_error_2/" target="_top">【已解决】antrlworks调试出错：Compiler exception: java.io.IOException Cannot run program "\javac": CreateProcess error=2 The system cannot find the file specified</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlrworks_time_out_waiting_to_connect_to_the_remote_parser"></a><p class="bibliomixed">[60] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlrworks_cannot_launch_the_debuggertab_time_out_waiting_to_connect_to_the_remote_parser/" target="_top">【已解决】ANTLRWorks调试出错：Cannot launch the debuggerTab. Time-out waiting to connect to the remote parser</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlrworks_parser_java_error_identifier_expected"></a><p class="bibliomixed">[61] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlrworks_debug_error_for_parser_java_error_identifier_expected/" target="_top">【已解决】antlrworks中调试出错：xxxParser.java:1870: error: &lt;identifier&gt; expected</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlrworks_1_5_compiler_failed_with_result_code_1"></a><p class="bibliomixed">[62] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlrworks_1_5_compiler_failed_with_result_code_1/" target="_top">【已解决】ANTLRWorks 1.5编译代码出错：Compiler failed with result code 1</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.summary_antlr_antlrworks_bug_note_experience"></a><p class="bibliomixed">[63] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/summary_antlr_antlrworks_bug_note_experience/" target="_top">【整理】antlrworks使用心得，经验总结，注意事项，bug总结</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlrworks_cannot_run_program_jre6_bin_javac_createprocess_error_2"></a><p class="bibliomixed">[64] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlrworks_compiler_exception_java_io_ioexception_cannot_run_program_jre6_bin_javac_createprocess_error_2/" target="_top">【已解决】antlrworks再次出错：Compiler exception: java.io.IOException Cannot run program "C:\Program Files(x86)\Java\jre6\bin\javac": CreateProcess error=2</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.some_time_antlr_antlrworks_crash_log"></a><p class="bibliomixed">[65] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/some_time_antlr_antlrworks_crash_log/" target="_top">【记录】antlr的antlrworks某次挂掉的log</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_about_support_preprocess_or_not"></a><p class="bibliomixed">[66] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_about_support_preprocess_or_not/" target="_top">【记录】关于ANTLR中对于预处理的支持：以为支持普通文件的预处理呢，但是实际上是ANTLR自身识别你写的语法文件的预处理</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.c_preprocess_cpp_g_convert_antlr_v2_to_antlr_v3_version"></a><p class="bibliomixed">[67] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/c_preprocess_cpp_g_convert_antlr_v2_to_antlr_v3_version/" target="_top">【记录】将antlr v2的C/C++的preprocess，即cpp.g，转换为antlr v3</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_preprocess_remove_upsupported_eddl_element"></a><p class="bibliomixed">[68] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/use_antlr_preprocess_a_new_eddl_file_remove_upsupported_eddl_element/" target="_top">【记录】用antlr的preprocess去预处理一个新的eddl文件去除eddl中不支持的元素对应的文件内容</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_multiple_para_define_macro_replacement"></a><p class="bibliomixed">[69] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/summary_antlr_v2_cpplexer_g_multiple_para_define_implement_macro_replacement/" target="_top">【整理】分析cppLexer.g中的多参数的#define实现宏替换的逻辑过程</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_support_preprocess_define_replacement_no_para"></a><p class="bibliomixed">[70] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_support_preprocess_define_replacement_no_para/" target="_top">【记录】让antlr的预处理，支持无参数的宏替换</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_preprocess_recursive_include"></a><p class="bibliomixed">[71] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_preprocess_recursive_include/" target="_top">【记录】尝试用antlr处理C代码中的#include</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_exception_handling_check_whether_tree_node_exception"></a><p class="bibliomixed">[72] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_exception_handling_check_whether_a_tree_node_is_exception/" target="_top">【记录】antlr异常处理：在ParseTree去getTree之后，判断某个树节点是否出现异常</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.record_antlr_exception_handling_learing_summary"></a><p class="bibliomixed">[73] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/record_antlr_exception_handling_learing_summary/" target="_top">【记录】Antlr中的异常处理学习笔记</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_exception_handling_main_type_recognitionexception"></a><p class="bibliomixed">[74] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/summary_antlr_exception_handling_type_main_type_is_recognitionexception/" target="_top">【整理】antlr的Exception Handling异常处理中的异常Exception的类型</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.try_implement_antlr_v3_error_handling_and_error_recovery"></a><p class="bibliomixed">[75] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/try_implement_antlr_v3_error_handling_and_error_recovery/" target="_top">【记录】尝试折腾antlr v3的异常处理和错误恢复：VARIABLE的CLASS的值INPUT故意写错为INPUT1</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_exception_handling_quit_while_first_error"></a><p class="bibliomixed">[76] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_exception_handling_quit_while_first_error/" target="_top">【记录】antlr的异常处理：遇到第一个错误就停止和退出</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_quit_first_exception"></a><p class="bibliomixed">[77] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_preprocess_quit_while_first_exception_for_new_hart_eddl_file/" target="_top">【已解决】在用antlr预处理一个新的hart的eddl文件时希望第一次出错就退出</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_debug_compile_error_recoverfrommismatchedset_intstream"></a><p class="bibliomixed">[78] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_debug_compile_error_recoverfrommismatchedset_intstream_recognitionexception_bitset/" target="_top">【已解决】antlr中尝试出错就退出，结果编译parser出错：error: recoverFromMismatchedSet(IntStream,RecognitionException,BitSet) in xxxParser cannot override recoverFromMismatchedSet(IntStream,RecognitionException,BitSet) in BaseRecognizer，return type void is not compatible with Object</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_preprocess_mismatechedtokenexception_output_more"></a><p class="bibliomixed">[79] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_preprocess_eddl_file_mismatechedtokenexception_output_more_detailed_info/" target="_top">【记录】用antlr预处理异常MismatchedTokenException时能输出更详细的信息</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.try_use_antlr_exception_handling_paraphrase_more_error_msg"></a><p class="bibliomixed">[80] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/try_use_antlr_exception_handling_paraphrase_to_give_more_user_friendly_error_message/" target="_top">【记录】尝试antlr的paraphrase去提供对于用户更好友好的错误信息</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.record_playing_with_antlr_error_handling_report_mode_info_when_error"></a><p class="bibliomixed">[81] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/record_playing_with_antlr_error_handling_report_mode_info_when_error/" target="_top">【记录】折腾antlr的异常处理：使得当初错时，输出更详细的错误信息，包含堆栈信息</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_settext_not_work_for_recursive_token"></a><p class="bibliomixed">[82] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_settext_not_work_for_recursive_token/" target="_top">【未解决】antlr中setText()在递归嵌套的token中无效</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_define_replacement_can_not_remove_macro_text"></a><p class="bibliomixed">[83] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_define_replacement_can_not_remove_macro_text/" target="_top">【未解决】antlr实现#define的宏的多层（递归）替换后，去不掉宏的内容</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_grammar_match_recursive"></a><p class="bibliomixed">[84] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_grammar_match_recursive/" target="_top">【基本解决】用antlr匹配嵌套递归的代码</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.try_to_enhance_antlr_lexer_and_parser_parse_speed_performance"></a><p class="bibliomixed">[85] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/try_to_enhance_antlr_lexer_and_parser_parse_speed_performance/" target="_top">【记录】尝试优化antlr的lexer和parser以提高继续速度（解析性能）</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_v3_conditional_match_in_lexer"></a><p class="bibliomixed">[86] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_v3_conditional_match_in_lexer/" target="_top">【已解决】antlr v3的lexer的条件性匹配</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.add_ansi_c_parse_for_parse_eddl_method_of_antlr"></a><p class="bibliomixed">[87] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/add_ansi_c_parse_for_parse_eddl_method_of_antlr/" target="_top">【记录】antlr中解析EDDL时解析METHOD中的C代码</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.summary_some_other_antlr_material"></a><p class="bibliomixed">[88] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/summary_some_other_antlr_material/" target="_top">【整理】关于antlr的一些资料</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.download_antlr_4_0_rc_1_complete_jar"></a><p class="bibliomixed">[89] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/download_antlr_4_0_rc_1_complete_jar/" target="_top">【资源下载】antlr-4.0-rc-1-complete.jar</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.download_antlr_the_definitive_antlr_reference_v2_v3_v4"></a><p class="bibliomixed">[90] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/download_antlr_the_definitive_antlr_reference_v2_v3_v4/" target="_top">【资料下载】ANTLR的最全的官方文档：The Definitive ANTLR Reference：v2，v3，v4版本都有下载</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.android_debug_antlr_parser_error_for_return"></a><p class="bibliomixed">[91] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/android_debug_antlr_parser_error_for_xxx_return/" target="_top">【问题】android中调试antlr时执行xxx_return去获得parserResult时出错</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.antlr_ast_no_parent_child_relation"></a><p class="bibliomixed">[92] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/antlr_ast_no_parent_child_relation/" target="_top">【已解决】antlr中获得的AST的CommonTree这个树的变量中，不存在所想要的父子(parent,child)关系</a></span>
+  <span class="author"></span>
+</p>
+</div>
+<div class="bibliomixed">
+<a name="ref.summary_antlr_related_background_knowledge"></a><p class="bibliomixed">[93] 
+  <span class="bibliosource"><a class="link" href="http://www.crifan.com/summary_antlr_related_background_knowledge/" target="_top">【整理】与antlr相关的背景知识：LL(k) vs LR(k), lexer vs parser, NFA vs DFA, computing lookahead</a></span>
+  <span class="author"></span>
+</p>
+</div>
+</div>
+</div>
+</body>
+</html>
