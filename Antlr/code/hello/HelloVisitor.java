@@ -10,12 +10,6 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
  */
 public interface HelloVisitor<T> extends ParseTreeVisitor<T> {
 	/**
-	 * Visit a parse tree produced by {@link HelloParser#a}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitA(HelloParser.AContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link HelloParser#s}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
